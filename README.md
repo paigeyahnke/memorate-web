@@ -1,1 +1,2 @@
-# memorate-web
+# MemoRate
+It remembers, when you can't.
