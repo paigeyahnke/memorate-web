@@ -13,5 +13,5 @@ Basically, what do you wish you knew before you went to that restaurant, bought 
 Ask the you that lived in that moment; only they know how you really fealt.
 
 ## Project Design
-[Download Wireframe PDF](MemoRate_Wireframe.pdf)
+[View Wireframe](MemoRate_Wireframe.pdf)
 
