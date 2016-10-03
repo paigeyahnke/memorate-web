@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="memorate-web" />
+        <module name="MemoRate" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="memorate-web" target="1.8" />
+      <module name="MemoRate" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

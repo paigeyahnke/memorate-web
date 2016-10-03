@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="MemoRate">
-    <output-path>$PROJECT_DIR$/out/artifacts/MemoRate</output-path>
-    <root id="archive" name="MemoRate.war" />
-  </artifact>
-</component>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/memorate-web.iml" filepath="$PROJECT_DIR$/memorate-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MemoRate.iml" filepath="$PROJECT_DIR$/MemoRate.iml" />
     </modules>
   </component>
 </project>
