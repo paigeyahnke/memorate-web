@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 
-<%@ include file="templates/head.jsp" %>
+<%@ include file="../templates/head.jsp" %>
 
 <body>
-    <%@ include file="templates/header.jsp" %>
+    <%@ include file="../templates/header.jsp" %>
 
-    <%@ include file="templates/navigation.jsp" %>
+    <%@ include file="../templates/navigation.jsp" %>
 
     <div id="top">
         <h2>Record</h2>

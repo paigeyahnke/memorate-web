@@ -12,6 +12,22 @@
     font-family: 'Rubik';
 }
 
+form {
+    margin: 0 auto;
+    width: 25em;
+}
+
+label {
+    width: 6em;
+    display: inline-block;
+    margin-top: .2em;
+}
+
+#submit {
+    margin: .5em;
+    border-radius: .25em;
+}
+
 p {
     font-family: 'Hind';   
 }

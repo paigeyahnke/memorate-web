@@ -4,4 +4,23 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <!-- Tell the server to use form-based authentication. -->
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+      <form-login-page>/signIn.jsp</form-login-page>
+      <form-error-page>/signInError.jsp</form-error-page>
+    </form-login-config>
+  </login-config>
+
+    <!-- Protect everything within the "user" directory. -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>user</web-resource-name>
+            <url-pattern>/user/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
 </web-app>

@@ -8,7 +8,7 @@
 
     <div id="user">
         <ul>
-            <li><a href="profile.jsp">Profile</a></li> |
+            <li><a href="../user/profile.jsp">Profile</a></li> |
             <li><a href="">Sign Out</a></li>
         </ul>
     </div>
