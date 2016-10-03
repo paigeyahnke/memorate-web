@@ -15,4 +15,4 @@ Ask the you that lived in that moment; only they know how you really fealt.
 ## Project Design
 [View Wireframe](MemoRate_Wireframe.pdf)  
 [Similar Design](https://www.cincopa.com/media-platform/the-best-responsive-design-gallery#AsPAkk9KanWA|tab=grid)
-
+[Supporting Technologies](integrations.md)  
