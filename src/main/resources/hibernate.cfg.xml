@@ -22,6 +22,10 @@
 
         <!-- List the annotated com.memorate.entity class/es -->
         <mapping class="com.memorate.entity.Memory"/>
+        <mapping class="com.memorate.entity.User"/>
+        <mapping class="com.memorate.entity.Role"/>
+
+
 
     </session-factory>
 

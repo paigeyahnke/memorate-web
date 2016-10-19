@@ -60,21 +60,8 @@ public class MemoryDao {
      * @return memory id
      */
     public int addMemory(Memory memory) {
-        Session session = SessionFactoryProvider.getSessionFactory().openSession();
-        Transaction tx = null;
-        Integer memoryId = null;
-        try {
-            tx = session.beginTransaction();
-            memoryId = (Integer) session.save(memory);
-            tx.commit();
-            log.info("Added memory: " + memory + " with id of: " + memoryId);
-        } catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            log.error(e);
-        } finally {
-            session.close();
-        }
-        return memoryId;
+        AbstractDao dao = new AbstractDao(Memory.class);
+        return dao.create(memory);
     }
 
     /**
