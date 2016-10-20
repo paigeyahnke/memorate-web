@@ -10,9 +10,9 @@ How do you keep track of how much you liked something? Remember it? I don't (at 
 - Custom Tags (for searching)
 
 Basically, what do you wish you knew before you went to that restaurant, bought that wine, or hired that babysitter?  
-Ask the you that lived in that moment; only they know how you really fealt.
+Ask the you that lived in that moment; only they know how you really felt.
 
 ## Project Design
-[View Wireframe](MemoRate_Wireframe.pdf)  
-[Similar Design](https://www.cincopa.com/media-platform/the-best-responsive-design-gallery#AsPAkk9KanWA|tab=grid)
+[View Wireframe](design/MemoRate_Wireframe.pdf)  
+[Database](design/database.png)  
 [Supporting Technologies](integrations.md)  
