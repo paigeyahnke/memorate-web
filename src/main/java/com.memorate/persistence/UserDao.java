@@ -16,8 +16,19 @@ public class UserDao {
     private final Logger log = Logger.getLogger(this.getClass());
 
 
+    /** Get a single memory by the given id
+     *
+     * @param  username
+     * @return Memory
+     */
+    public User getUser(String username) {
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        User user = (User) session.get(User.class, username);
+        return user;
+    }
+
     /**
-     * Add a new memory
+     * Add a new user
      * @param user
      * @return memory id
      */
@@ -44,7 +55,7 @@ public class UserDao {
      * Updates a user
      * @param user the user
      */
-    public void updateMemory(User user) {
+    public void updateUser(User user) {
         AbstractDao dao = new AbstractDao(User.class);
         dao.update(user);
     }
