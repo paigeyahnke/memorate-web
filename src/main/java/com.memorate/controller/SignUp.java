@@ -1,6 +1,5 @@
 package com.memorate.controller;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,20 +21,29 @@ public class SignUp extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = new User(request.getParameter("username"), request.getParameter("password"));
-        log.debug("Adding User: " + user);
+        String username = request.getParameter("username");
         UserDao dao = new UserDao();
-        dao.addUser(user);
 
-        try {
-            request.login(user.getUserName(), user.getPassword());
-            log.debug("Logged in new user: " + user.getUserName());
+        User existingUser = dao.getUser(username);
 
-        } catch (ServletException e) {
-            log.debug("Failed to login new user: " + user.getUserName());
-            log.error(e);
+        if (existingUser == null) {
+            User user = new User(, request.getParameter("password"));
+            log.debug("Adding User: " + user);
+            dao.addUser(user);
+
+            try {
+                request.login(user.getUserName(), user.getPassword());
+                log.debug("Logged in new user: " + user.getUserName());
+
+            } catch (ServletException e) {
+                log.debug("Failed to login new user: " + user.getUserName());
+                log.error(e);
+            }
+
+            response.sendRedirect("/user/remember.jsp");
+        } else {
+            response.sendError(400, "Username already taken");
         }
 
-        response.sendRedirect("/remember.jsp");
     }
 }

@@ -13,8 +13,30 @@
 }
 
 form {
+    margin: .5em;
+    /*width: 15em;*/
+    display: inline-block;
+    float: left;
+    text-align: left;
+    background-color: #ccf3cf;
+    border-radius: 1em;
+    padding: 1.25em;
+    color: #363635;
+}
+
+form h2 {
+    text-align: center;
+    margin: .25em 0 0 0;
+    display: block;
+    width: 100%;
+}
+
+#forms {
     margin: 0 auto;
-    width: 25em;
+    vertical-align: top;
+    overflow: auto;
+    display: inline-block;
+    padding: 1em;
 }
 
 label {
@@ -23,9 +45,11 @@ label {
     margin-top: .2em;
 }
 
-#submit {
-    margin: .5em;
+.submit {
+    margin: 2em auto 0 auto;
     border-radius: .25em;
+    display: block;
+    width: 6em;
 }
 
 p {
@@ -96,7 +120,6 @@ input.search {
     display: inline-block;
     font-size: 1.25em;
     font-weight: bold;
-    display: inline-block;
     padding: .25em .5em;
     border-radius: .5em;
     background-color: #363635;
@@ -256,6 +279,16 @@ li {
         width: 11em;
     }
 }
+
+.error {
+    color: #ff7070;
+    font-size: .8em;
+    text-align: center;
+    display: block;
+    margin: 1em 0 -1.5em 0;
+    width: 100%;
+}
+
 
 
 
