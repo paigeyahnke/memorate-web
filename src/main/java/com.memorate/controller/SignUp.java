@@ -27,7 +27,7 @@ public class SignUp extends HttpServlet {
         User existingUser = dao.getUser(username);
 
         if (existingUser == null) {
-            User user = new User(, request.getParameter("password"));
+            User user = new User(username, request.getParameter("password"));
             log.debug("Adding User: " + user);
             dao.addUser(user);
 
