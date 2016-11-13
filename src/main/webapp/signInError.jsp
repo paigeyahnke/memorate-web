@@ -10,7 +10,7 @@
 </div>
 
 <div id="main">
-    <p>Log in attempt failed. Try again.</p>
+    <p>Log in attempt failed. <a href="${root}/signUp">Try again</a></p>
 </div>
 
 </body>

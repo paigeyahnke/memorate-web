@@ -1,3 +1,5 @@
+<%@ include file="tagSetup.jsp" %>
+
 <head>
     <title>MemoRate</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
