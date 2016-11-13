@@ -121,6 +121,15 @@ public class Memory {
         this.username = username;
     }
 
+    public String getRatingHtml() {
+        String ratingString = "";
+        for (int i = 0; i < 5; i++) {
+            ratingString += (i <= rating) ? "&#x2605" : "&#x2606";
+        }
+
+        return "<span class='rating'>" + ratingString + "</span>";
+    }
+
     @Override
     public String toString() {
         return "Memory{" +

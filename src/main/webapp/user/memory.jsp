@@ -17,9 +17,7 @@
 
 <div id="main">
     <img src="${imagePath}/${empty memory.imagePath ? defaultImage : memory.imagePath}" />
-    <span id="rating">
-        <c:forEach var="i" begin="1" end="${memory.rating}">&#x2605</c:forEach>
-    </span>
+    ${memory.getRatingHtml()}
 </div>
 
 </body>
