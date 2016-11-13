@@ -39,7 +39,7 @@ public class MemoryDaoTest {
 
     @Test
     public void deleteMemory() throws Exception {
-        Memory memory = new Memory("Karuba Gold", 2);
+        Memory memory = new Memory("Karuba Gold", 2, "holliniesen");
         memoryId = memoryDao.addMemory(memory);
         assertNotNull("Failed to insert new memory", memoryDao.getMemory(memoryId));
         memoryDao.deleteMemory(memoryDao.getMemory(memoryId));
@@ -48,12 +48,18 @@ public class MemoryDaoTest {
 
     @Test
     public void updateMemory() throws Exception {
-        Memory memory = new Memory("Karuba Gold", 2);
+        Memory memory = new Memory("Karuba Gold", 2, "holliniesen");
         memoryId = memoryDao.addMemory(memory);
         assertEquals("Memory not recorded correctly", 2, memoryDao.getMemory(memoryId).getRating());
         memory.setRating(4);
         memoryDao.updateMemory(memory);
         assertEquals("Memory not recorded correctly", 4, memoryDao.getMemory(memoryId).getRating());
+    }
+
+    @Test
+    public void getAllMemoriesForUser() throws Exception {
+        List<Memory> memories = memoryDao.getAllMemoriesFor("holliniesen");
+        assertNotNull("No memories returned", memories);
     }
 
 }

@@ -31,6 +31,17 @@ public class MemoryDao {
         return memories;
     }
 
+    /** Return a list of all memories for user
+     *
+     * @return All memories
+     */
+    public List<Memory> getAllMemoriesFor(String username) {
+        List<Memory> memories = new ArrayList<Memory>();
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        memories = session.createCriteria(Memory.class, username).list();
+        return memories;
+    }
+
     /** Get a single memory by the given id
      *
      * @param id memory's id
