@@ -10,6 +10,8 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "role")
 public class Role {
     @Id
+    @GeneratedValue(generator="increment")
+    @GenericGenerator(name="increment", strategy = "increment")
     @Column(name = "id")
     private int id;
 

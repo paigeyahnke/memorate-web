@@ -34,7 +34,7 @@ public class MemoryDaoTest {
 
     @Test
     public void getMemoriesByRating() throws Exception {
-        assertTrue(memoryDao.getMemoriesByRating(5).size() == 1);
+        assertTrue(memoryDao.getMemoriesByRating(5).size() > 1);
     }
 
     @Test

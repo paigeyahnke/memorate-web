@@ -27,11 +27,14 @@
             <br />
 
             <label for="image">Image</label>
-            <input type="file" id="image" name="image" accept="image/*">
+            <input type="file" id="image" name="image" accept="image/*" />
             <br />
 
             <label for="memo">Memo</label>
-            <input type="text" name="memo" id="memo">
+            <input type="text" name="memo" id="memo" />
+
+            <label for="tags"></label>
+            <input type="text" name="tags" id="tags" />
 
             <button id="submitSignUp" class="submit">Remember</button>
         </form>

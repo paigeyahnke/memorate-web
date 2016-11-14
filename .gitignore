@@ -4,6 +4,7 @@
 # Added
 logs
 .DS_Store
+/src/main/resources/hibernate.cfg.xml
 
 # User-specific stuff:
 .idea/workspace.xml

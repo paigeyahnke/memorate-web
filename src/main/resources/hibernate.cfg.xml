@@ -11,8 +11,8 @@
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/MemoRate</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">password</property>
+        <property name="connection.username">student</property>
+        <property name="connection.password">i hope i rememorate this</property>
 
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
@@ -24,6 +24,7 @@
         <mapping class="com.memorate.entity.Memory"/>
         <mapping class="com.memorate.entity.User"/>
         <mapping class="com.memorate.entity.Role"/>
+        <mapping class="com.memorate.entity.Tag"/>
 
     </session-factory>
 
