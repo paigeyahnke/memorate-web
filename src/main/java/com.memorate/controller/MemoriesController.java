@@ -31,7 +31,7 @@ public class MemoriesController extends HttpServlet {
 
         request.setAttribute("memories", memories);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/user/remember.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/remember.jsp");
         dispatcher.forward(request, response);
 
     }

@@ -32,11 +32,12 @@ public class AbstractDao<T> {
             log.debug("Created " + object.getClass().getName() + " with id " +
                     "of: " + id);
         } catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
+            if (tx != null) tx.rollback();
             log.error(e);
         } finally {
             session.close();
         }
+
         return id;
     }
 

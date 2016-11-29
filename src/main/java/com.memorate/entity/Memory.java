@@ -3,6 +3,12 @@ package com.memorate.entity;
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * Created by paige on 9/14/16.
  * @author Paige Yahnke
@@ -30,6 +36,9 @@ public class Memory {
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name = "id")
     private int memoryId;
+
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="memory")
+    private Set<Tag> tags;
 
     /**
      * Instantiates a new memory.
@@ -121,13 +130,43 @@ public class Memory {
         this.username = username;
     }
 
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
+
+
     public String getRatingHtml() {
         String ratingString = "";
-        for (int i = 0; i < 5; i++) {
+        for (int i = 1; i <= 5; i++) {
             ratingString += (i <= rating) ? "&#x2605" : "&#x2606";
         }
 
         return "<span class='rating'>" + ratingString + "</span>";
+    }
+
+    public String getTagList() {
+        // Convert list of tags to list of keywords
+//        List<String> keywords = tags.stream().map(Tag::getKeyword).collect(Collectors.toList());
+//        return String.join(",", keywords);
+        if (tags.size() > 0) {
+            final String openTag = "<span class='tag'>";
+            final String closeTag = "</span>";
+            String tagHTML = "";
+            for (Tag tag : tags) {
+                tagHTML += openTag + tag.getKeyword() + closeTag;
+            }
+
+            int endIndex = tagHTML.length() - closeTag.length();
+            return tagHTML.substring(0, endIndex);
+        } else {
+            return "";
+        }
+
     }
 
     @Override
@@ -140,4 +179,6 @@ public class Memory {
                 ", memo= " + memo +
                 '}';
     }
+
+
 }

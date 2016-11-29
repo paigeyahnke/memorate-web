@@ -13,7 +13,6 @@
     </div>
 
     <div id="main">
-
         <form id="record" action="${pageContext.request.contextPath}/record" method="post">
             <h2>Record Memory:</h2>
             <br />

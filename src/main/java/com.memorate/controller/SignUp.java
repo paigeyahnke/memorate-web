@@ -13,6 +13,8 @@ import org.apache.log4j.Logger;
 
 /**
  * Created by paige on 10/19/16.
+ *
+ * @author Paige Yahnke
  */
 @WebServlet(name = "SignUp", urlPatterns = { "/signUp" } )
 public class SignUp extends HttpServlet {
@@ -28,19 +30,19 @@ public class SignUp extends HttpServlet {
 
         if (existingUser == null) {
             User user = new User(username, request.getParameter("password"));
-            log.debug("Adding User: " + user);
+            log.info("Adding User: " + user);
             dao.addUser(user);
 
             try {
                 request.login(user.getUserName(), user.getPassword());
-                log.debug("Logged in new user: " + user.getUserName());
+                log.info("Logged in new user: " + user.getUserName());
 
             } catch (ServletException e) {
                 log.debug("Failed to login new user: " + user.getUserName());
                 log.error(e);
             }
 
-            response.sendRedirect("/user/remember.jsp");
+            response.sendRedirect("remember");
         } else {
             response.sendError(400, "Username already taken");
         }

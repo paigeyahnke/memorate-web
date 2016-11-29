@@ -25,7 +25,7 @@
                 <button class="submit">Log In</button>
             </form>
 
-            <form id="signUp" action="${pageContext.request.contextPath}/signUp" method="post">
+            <form id="signUp" action="${root}/signUp" method="post">
                 <h2>Sign Up</h2>
                 <br />
 

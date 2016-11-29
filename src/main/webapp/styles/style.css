@@ -39,10 +39,17 @@ form h2 {
     padding: 1em;
 }
 
-label {
+form label {
     width: 6em;
     display: inline-block;
     margin-top: .2em;
+}
+
+span.tag {
+    margin: .2em;
+    background-color: #ccf3cf;
+    border-radius: .2em;
+    padding: .25em .5em;
 }
 
 .submit {
@@ -158,6 +165,20 @@ input.search:focus {
     font-size: 1.15em;
     color: #363635;
     margin: .5em;
+    overflow: hidden;
+}
+
+.memory h3 {
+    height: 2em;
+    display: block;
+    line-height: 1em;
+}
+
+span.vertical {
+    margin: auto .5em;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
 }
 
 h3 {

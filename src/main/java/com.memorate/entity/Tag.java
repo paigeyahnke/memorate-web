@@ -2,6 +2,7 @@ package com.memorate.entity;
 
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.JoinColumnOrFormula;
 
 /**
  * Created by paige on 10/19/16.
@@ -18,16 +19,19 @@ public class Tag {
     @Column(name = "keyword")
     private String keyword;
 
-    @Column(name = "memory_id")
-    private int memoryId;
+//    @Column(name = "memory_id")
+//    private int memoryId;
+
+    @ManyToOne(cascade=CascadeType.ALL)
+    private Memory memory;
 
     public Tag() {
 
     }
 
-    public Tag(String keyword, int memoryId) {
+    public Tag(String keyword, Memory memory) {
         this.keyword = keyword;
-        this.memoryId = memoryId;
+        this.memory = memory;
     }
 
     public int getId() {
@@ -42,11 +46,21 @@ public class Tag {
         this.keyword = keyword;
     }
 
-    public int getMemoryId() {
-        return memoryId;
+    public Memory getMemory() {
+        return memory;
     }
 
-    public void setMemoryId(int memoryId) {
-        this.memoryId = memoryId;
+    public void setMemory(Memory memory) {
+        this.memory = memory;
     }
+
+    //    public int getMemoryId() {
+//        return memoryId;
+//    }
+//
+//    public void setMemoryId(int memoryId) {
+//        this.memoryId = memoryId;
+//    }
+
+
 }

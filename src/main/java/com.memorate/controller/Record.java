@@ -6,9 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import com.memorate.entity.Memory;
 import com.memorate.entity.Tag;
@@ -37,18 +35,26 @@ public class Record extends HttpServlet {
 
         Memory memory = new Memory(name, rating, imagePath, memo, username);
         MemoryDao dao = new MemoryDao();
+        memory.setTags(extractTags(tagString, memory));
         dao.addMemory(memory);
-        saveTags(tagString, memory.getMemoryId());
+
+        response.sendRedirect("/remember");
     }
 
-    private void saveTags(String tagsString, int memoryId) {
+    private Set<Tag> extractTags(String tagsString, Memory memory) {
+        log.info(tagsString);
         String strippedString = tagsString.replaceAll("\\s+","");
         List<String> tagList = Arrays.asList(strippedString.split(","));
 
-        AbstractDao dao = new AbstractDao(Tag.class);
+        Set<Tag> tags = new HashSet<>();
         for (String tagString : tagList) {
-            Tag tag = new Tag(tagString, memoryId);
-            dao.create(tag);
+//            Tag tag = new Tag(tagString, memory);
+            Tag tag = new Tag();
+            tag.setKeyword(tagString);
+            tag.setMemory(memory);
+            tags.add(tag);
         }
+
+        return tags;
     }
 }

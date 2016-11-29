@@ -1,6 +1,6 @@
 <header>
     <div id="banner">
-        <a href="/" id="home">
+        <a href="${root}" id="home">
             <h1 id="logo">Memo<span class="primaryColor">Rate</span></h1>
         </a>
         <h3 id="tagline">It remembers, when you can't</h2>
