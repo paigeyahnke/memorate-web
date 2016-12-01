@@ -36,9 +36,16 @@ public class MemoryDao {
      * @return All memories
      */
     public List<Memory> getAllMemoriesFor(String username) {
+
         List<Memory> memories = new ArrayList<Memory>();
         Session session = SessionFactoryProvider.getSessionFactory().openSession();
-        memories = session.createCriteria(Memory.class, username).list();
+
+        memories = (List<Memory>) session.createCriteria(Memory.class)
+                .add( Restrictions.eq("username", username))
+                .list();
+
+//        memories = session.createCriteria(Memory.class, username).list();
+        session.close();
         return memories;
     }
 

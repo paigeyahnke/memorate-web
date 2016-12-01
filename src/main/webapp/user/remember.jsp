@@ -30,7 +30,7 @@
     </div>
 
     <div id="main">
-        <table class="display datatable">
+        <table class="display datatable" id="memoryTable">
             <thead>
             <tr>
                 <th>Id</th>

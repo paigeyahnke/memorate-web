@@ -32,6 +32,10 @@ form h2 {
     width: 100%;
 }
 
+#memoryTable {
+    display: block;
+}
+
 #record h2 {
     margin: .5em 0 .25em 0;
 }
