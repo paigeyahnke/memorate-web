@@ -26,6 +26,8 @@ public class Record extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        log.info("The recorded rating is: " + request.getParameter("rating"));
+
         String name = request.getParameter("name");
         int rating = Integer.parseInt(request.getParameter("rating"));
         String memo = request.getParameter("memo");
@@ -42,7 +44,7 @@ public class Record extends HttpServlet {
     }
 
     private Set<Tag> extractTags(String tagsString, Memory memory) {
-        log.info(tagsString);
+        log.info("Tags string: " + tagsString);
         String strippedString = tagsString.replaceAll("\\s+","");
         List<String> tagList = Arrays.asList(strippedString.split(","));
 

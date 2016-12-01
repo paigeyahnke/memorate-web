@@ -14,21 +14,40 @@
 
 form {
     margin: .5em;
-    /*width: 15em;*/
     display: inline-block;
     float: left;
     text-align: left;
     background-color: #ccf3cf;
     border-radius: 1em;
-    padding: 1.25em;
+    padding: 1.5em;
     color: #363635;
 }
+
+
 
 form h2 {
     text-align: center;
     margin: .25em 0 0 0;
     display: block;
     width: 100%;
+}
+
+#record h2 {
+    margin: .5em 0 .25em 0;
+}
+
+#imageSelector {
+    display: block;
+    margin: 1.5em auto .5em auto;
+    width: 15em;
+}
+
+#record label {
+    width: 5em;
+}
+
+#record {
+    padding: 1em 2.25em;
 }
 
 #forms {
@@ -53,10 +72,16 @@ span.tag {
 }
 
 .submit {
-    margin: 2em auto 0 auto;
-    border-radius: .25em;
+    padding: .25em .75em;
+    font-size: .8em;
+    background-color: #FDFDFF;
+    margin: 1em auto 0 auto;
+    border-radius: .5em;
     display: block;
-    width: 6em;
+}
+
+.submit:hover {
+    background-color: azure;
 }
 
 p {

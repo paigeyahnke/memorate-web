@@ -16,6 +16,8 @@
         ${memory.getRatingHtml()}
     </div>
 
+    <a href="${root}/delete?memoryId=${memory.memoryId}" id="deleteMemoryButton">Delete</a>
+
 </div>
 
 </body>

@@ -15,7 +15,6 @@ public class SessionFactoryProvider {
     private static SessionFactory sessionFactory;
 
     private SessionFactoryProvider() {
-
     }
 
     private static void createSessionFactory() {
@@ -32,6 +31,7 @@ public class SessionFactoryProvider {
             createSessionFactory();
         }
         return sessionFactory;
-
     }
+
+
 }

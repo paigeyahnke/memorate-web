@@ -1,5 +1,6 @@
 package com.memorate.controller;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +17,15 @@ import org.apache.log4j.Logger;
  *
  * @author Paige Yahnke
  */
-@WebServlet(name = "SignUp", urlPatterns = { "/signUp" } )
+@WebServlet(name = "SignUp", urlPatterns = { "/signUp", "" } )
 public class SignUp extends HttpServlet {
 
     private final Logger log = Logger.getLogger(this.getClass());
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect("remember");
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

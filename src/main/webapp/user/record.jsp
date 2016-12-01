@@ -9,34 +9,53 @@
     <%@ include file="../templates/navigation.jsp" %>
 
     <div id="top">
-        <h2>Record</h2>
     </div>
 
     <div id="main">
-        <form id="record" action="${pageContext.request.contextPath}/record" method="post">
-            <h2>Record Memory:</h2>
-            <br />
+        <div id="forms">
+            <form id="record"
+                  action="${pageContext.request.contextPath}/record"
+                  method="post">
 
-            <label for="title">Title</label>
-            <input type="text" name="name" id="title" />
-            <br />
+                <h2>Record Memory</h2>
+                <br />
 
-            <label for="rating">Rating</label>
-            <input type="number" name="rating" id="rating" min="1" max="5"/>
-            <br />
+                <label for="title">Title</label>
+                <input type="text"
+                       name="name"
+                       id="title" />
+                <br />
 
-            <label for="image">Image</label>
-            <input type="file" id="image" name="image" accept="image/*" />
-            <br />
+                <label for="memo">Memo</label>
+                <input type="text"
+                       name="memo"
+                       id="memo" />
+                <br />
 
-            <label for="memo">Memo</label>
-            <input type="text" name="memo" id="memo" />
+                <label for="tags">Tags</label>
+                <input type="text"
+                       name="tags"
+                       id="tags"
+                       placeholder=" tag1, tag2, tag3 " />
+                <br />
 
-            <label for="tags"></label>
-            <input type="text" name="tags" id="tags" />
+                <input type="file"
+                       id="imageSelector"
+                       name="image"
+                       accept="image/*" />
 
-            <button id="submitSignUp" class="submit">Remember</button>
-        </form>
+                <select id="rating" name="rating" style="display:none;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <button id="saveMemoryButton" class="submit">Remember</button>
+            </form>
+        </div>
+
     </div>
 
     <footer>

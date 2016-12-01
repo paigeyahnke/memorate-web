@@ -42,11 +42,17 @@ public class AbstractDao<T> {
     }
 
     public T get(int id) {
-        return (T) getSession().get(type, id);
+        Session session = getSession();
+        T result = (T) session.get(type, id);
+        session.close();
+        return result;
     }
 
     public List<T> getAll() {
-       return (ArrayList<T>)getSession().createCriteria(type).list();
+        Session session = getSession();
+        ArrayList<T> result = (ArrayList<T>) session.createCriteria(type).list();
+        session.close();
+        return result;
     }
 
     public void update(T object) {
@@ -75,7 +81,7 @@ public class AbstractDao<T> {
             log.debug("Deleted " + object.getClass().getName() + ": " + object);
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
-            log.error(e);
+            log.error("Failed to delete object with error: " + e);
         } finally {
             session.close();
         }

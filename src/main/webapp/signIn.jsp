@@ -3,7 +3,12 @@
 <%@ include file="templates/head.jsp" %>
 
 <body>
-    <%@ include file="templates/header.jsp" %>
+    <header>
+        <%@ include file="templates/banner.jsp" %>
+        <div id="user"></div>
+    </header>
+
+    <nav><ul></ul></nav>
 
     <div id="top">
     </div>
@@ -20,6 +25,7 @@
 
                 <label for="password">Password: </label>
                 <input type="password" name="j_password" id="password">
+                <br />
                 <br />
 
                 <button class="submit">Log In</button>
@@ -39,6 +45,7 @@
 
                 <label for="validatePassword">Password</label>
                 <input type="password" id="validatePassword" onkeyup="validate();" />
+                <br />
                 <br />
 
                 <button id="submitSignUp" class="submit" disabled="disabled">Sign Up</button>
