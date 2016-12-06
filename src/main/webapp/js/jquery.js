@@ -11,6 +11,8 @@ $(document).ready(function() {
         theme: 'fontawesome-stars'
     });
 
+    $('#tags').tagit();
+
     // $('#deleteMemory').on("click", function() {
     //     var memoryId = $('.memory').attr("id");
     //     location.href = "/delete?memoryId=" + memoryId;

@@ -32,11 +32,13 @@
                        id="memo" />
                 <br />
 
-                <label for="tags">Tags</label>
-                <input type="text"
-                       name="tags"
-                       id="tags"
-                       placeholder=" tag1, tag2, tag3 " />
+                <%--<label for="tags">Tags</label>--%>
+                <%--<input type="text"--%>
+                       <%--name="tags"--%>
+                       <%--id="tags"--%>
+                       <%--placeholder=" tag1, tag2, tag3 " />--%>
+
+                <ul id="tags"></ul>
                 <br />
 
                 <input type="file"

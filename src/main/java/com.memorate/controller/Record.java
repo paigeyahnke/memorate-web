@@ -26,7 +26,7 @@ public class Record extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        log.info("The recorded rating is: " + request.getParameter("rating"));
+        log.info("The recorded tags are: " + request.getParameter("tags"));
 
         String name = request.getParameter("name");
         int rating = Integer.parseInt(request.getParameter("rating"));

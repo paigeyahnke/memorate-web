@@ -54,9 +54,6 @@ form h2 {
     width: 5em;
 }
 
-#record {
-    padding: 1em 2.25em;
-}
 
 #forms {
     margin: 0 auto;
@@ -342,6 +339,37 @@ li {
     margin: 1em 0 -1.5em 0;
     width: 100%;
 }
+
+
+.tagit-label {
+    color: #363635;
+    font-size: 1em;
+}
+
+#record {
+    padding: 1em 2.25em;
+    width: 18em;
+}
+
+/* Overriding tagit */
+.ui-widget-content {
+    background: none;
+    border: none;
+    color: #4E564B;
+}
+
+.ul.tagit li.tagit-choice {
+    color: #363635;
+}
+
+.tagit-new {
+    background-color: white;
+    display: block;
+    width: 100%;
+    margin-top: .25em;
+}
+
+
 
 
 
