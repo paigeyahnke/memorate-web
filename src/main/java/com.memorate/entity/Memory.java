@@ -19,25 +19,25 @@ public class Memory {
     @Column(name = "name")
     private String name;
 
-    @Column(name="rating")
+    @Column(name = "rating")
     private int rating;
 
-    @Column(name="image")
+    @Column(name = "image")
     private String imagePath;
 
-    @Column(name="memo")
+    @Column(name = "memo")
     private String memo;
 
-    @Column(name="user_name")
+    @Column(name = "user_name")
     private String username;
 
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
     private int memoryId;
 
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="memory")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "memory", fetch = FetchType.EAGER)
     private Set<Tag> tags;
 
     /**

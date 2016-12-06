@@ -11,18 +11,16 @@ import org.hibernate.annotations.JoinColumnOrFormula;
 @Table(name = "tag")
 public class Tag {
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     @Column(name = "id")
     private int id;
 
     @Column(name = "keyword")
     private String keyword;
 
-//    @Column(name = "memory_id")
-//    private int memoryId;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Memory memory;
 
     public Tag() {
@@ -53,14 +51,5 @@ public class Tag {
     public void setMemory(Memory memory) {
         this.memory = memory;
     }
-
-    //    public int getMemoryId() {
-//        return memoryId;
-//    }
-//
-//    public void setMemoryId(int memoryId) {
-//        this.memoryId = memoryId;
-//    }
-
 
 }

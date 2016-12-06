@@ -1,13 +1,7 @@
 $(document).ready(function() {
-    $("table").DataTable( {
-        "columns": [
-            { "width": "10%" },
-            { "width" : "15%" },
-            { "width": "5%" },
-            { "width" : "30%" },
-            { "width": "30%" }
-        ]
-    } );
+    // $("#memoryTable").DataTable();
+
+    $('#memoryTable').dataTable();
 
     $("tbody tr").on("click", function() {
         location.href = $(this).attr("id");

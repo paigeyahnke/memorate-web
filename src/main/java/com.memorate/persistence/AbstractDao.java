@@ -34,8 +34,6 @@ public class AbstractDao<T> {
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             log.error(e);
-        } finally {
-            session.close();
         }
 
         return id;
@@ -66,8 +64,6 @@ public class AbstractDao<T> {
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             log.error(e);
-        } finally {
-            session.close();
         }
     }
 
@@ -82,12 +78,10 @@ public class AbstractDao<T> {
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             log.error("Failed to delete object with error: " + e);
-        } finally {
-            session.close();
         }
     }
 
     private Session getSession() {
-        return SessionFactoryProvider.getSessionFactory().openSession();
+        return SessionFactoryProvider.getSessionFactory().getCurrentSession();
     }
 }

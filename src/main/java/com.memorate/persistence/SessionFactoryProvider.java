@@ -1,5 +1,6 @@
 package com.memorate.persistence;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -13,6 +14,8 @@ import org.hibernate.service.ServiceRegistry;
 public class SessionFactoryProvider {
 
     private static SessionFactory sessionFactory;
+    private static Session session;
+
 
     private SessionFactoryProvider() {
     }
@@ -33,5 +36,18 @@ public class SessionFactoryProvider {
         return sessionFactory;
     }
 
+
+    public static Session getSession() {
+
+//        if (session == null) {
+            if (sessionFactory == null) {
+                createSessionFactory();
+            }
+//
+//            session = sessionFactory.openSession();
+//        }
+
+        return sessionFactory.getCurrentSession();
+    }
 
 }
