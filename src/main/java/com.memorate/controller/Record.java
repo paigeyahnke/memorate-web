@@ -45,16 +45,25 @@ public class Record extends HttpServlet {
 
     private Set<Tag> extractTags(String tagsString, Memory memory) {
         log.info("Tags string: " + tagsString);
+
+        // Adding the name/ title of the memo to the tags
+        String nameTags = memory.getName().replaceAll("&|'|-","");
+        nameTags = nameTags.replaceAll("\\s+",",");
+        tagsString += "," + nameTags;
+
         String strippedString = tagsString.replaceAll("\\s+","");
+        strippedString = strippedString.replaceAll("&", "");
+        strippedString = strippedString.toLowerCase();
         List<String> tagList = Arrays.asList(strippedString.split(","));
 
         Set<Tag> tags = new HashSet<>();
         for (String tagString : tagList) {
-//            Tag tag = new Tag(tagString, memory);
-            Tag tag = new Tag();
-            tag.setKeyword(tagString);
-            tag.setMemory(memory);
-            tags.add(tag);
+            if (!tagString.equals("")) {
+                Tag tag = new Tag();
+                tag.setKeyword(tagString);
+                tag.setMemory(memory);
+                tags.add(tag);
+            }
         }
 
         return tags;

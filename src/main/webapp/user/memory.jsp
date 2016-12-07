@@ -10,10 +10,13 @@
 </div>
 
 <div id="main">
-    <div class="memory">
-        <h2>${memory.name}</h2>
+    <div class="memoryDetail">
+        <h1>${memory.name}</h1>
         <img src="${imagePath}/${empty memory.imagePath ? defaultImage : memory.imagePath}" />
         ${memory.getRatingHtml()}
+        <div id="tagList">${memory.getTagList()}</div>
+
+        <p>${memory.memo}</p>
     </div>
 
     <a href="${root}/delete?memoryId=${memory.memoryId}" id="deleteMemoryButton">Delete</a>

@@ -12,6 +12,25 @@
     font-family: 'Rubik';
 }
 
+
+table#userInformation {
+    background-color: #ccf3cf;
+    display: inline-block;
+    margin: 1em auto;
+    width: auto;
+    padding: 2em;
+    border-radius: 1em;
+    border-collapse: collapse;
+}
+
+table#userInformation td, th {
+    padding: .5em;
+}
+
+td.editable {
+    color: #363635;
+}
+
 form {
     margin: .5em;
     display: inline-block;
@@ -22,8 +41,6 @@ form {
     padding: 1.5em;
     color: #363635;
 }
-
-
 
 form h2 {
     text-align: center;
@@ -75,8 +92,9 @@ form label {
 span.tag {
     margin: .2em;
     background-color: #ccf3cf;
-    border-radius: .2em;
+    border-radius: .5em;
     padding: .25em .5em;
+    display: inline-block;
 }
 
 .submit {
@@ -333,6 +351,45 @@ li {
         width: 11em;
     }
 }
+
+.memoryDetail {
+    width: 22em;
+    background-color: #dddddd;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.memoryDetail img {
+    max-width: 16em;
+    max-height: 16em;
+    margin: 1em auto;
+    display: block;
+}
+
+.memoryDetail h1 {
+    font-size: 1.5em;
+}
+
+#tagList {
+    width: 90%;
+    display: block;
+    margin: 1em auto;
+}
+
+#deleteMemoryButton {
+    background-color: #4E564B;
+    padding: .5em 1em;
+    color: #FDFDFF;
+    margin: 0 auto;
+    border-radius: .5em;
+    text-decoration: none;
+}
+
+#deleteMemoryButton:hover {
+    color: #ccf3cf;
+}
+
 
 .error {
     color: #ff7070;

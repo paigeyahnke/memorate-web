@@ -25,7 +25,7 @@ public class MemoryDao {
      */
     public List<Memory> getAllMemories() {
         List<Memory> memories;
-        Session session = SessionFactoryProvider.getSession();
+        Session session = SessionFactoryProvider.getSessionFactory().getCurrentSession();
         memories = session.createCriteria(Memory.class).list();
         return memories;
     }
@@ -37,7 +37,7 @@ public class MemoryDao {
     public Set<Memory> getAllMemoriesFor(String username) {
 
         List<Memory> memories = new ArrayList<Memory>();
-        Session session = SessionFactoryProvider.getSession();
+        Session session = SessionFactoryProvider.getSessionFactory().getCurrentSession();
 
         Transaction tx = null;
         try {
@@ -47,13 +47,11 @@ public class MemoryDao {
                     .add( Restrictions.eq("username", username))
                     .list();
 
-
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             log.error(e);
         }
-
 
 //        memories = session.createCriteria(Memory.class, username).list();
         return new HashSet<Memory>(memories);
@@ -65,8 +63,20 @@ public class MemoryDao {
      * @return Memory
      */
     public Memory getMemory(int id) {
-        Session session = SessionFactoryProvider.getSession();
-        Memory memory = (Memory) session.get(Memory.class, id);
+        Memory memory = null;
+        Session session = SessionFactoryProvider.getSessionFactory().getCurrentSession();
+
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+
+            memory = (Memory) session.get(Memory.class, id);
+
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            log.error(e);
+        }
 
         return memory;
     }
@@ -77,7 +87,7 @@ public class MemoryDao {
      * @return Memory
      */
     public List<Memory> getMemoriesByRating(int rating) {
-        Session session = SessionFactoryProvider.getSession();
+        Session session = SessionFactoryProvider.getSessionFactory().getCurrentSession();
         Criteria criteria = session.createCriteria(Memory.class);
         criteria.add(Restrictions.eq("rating", rating));
         List<Memory> memories = criteria.list();

@@ -37,17 +37,17 @@ public class SessionFactoryProvider {
     }
 
 
-    public static Session getSession() {
-
-//        if (session == null) {
-            if (sessionFactory == null) {
-                createSessionFactory();
-            }
+//    public static Session getSession() {
 //
-//            session = sessionFactory.openSession();
-//        }
-
-        return sessionFactory.getCurrentSession();
-    }
+////        if (session == null) {
+//            if (sessionFactory == null) {
+//                createSessionFactory();
+//            }
+////
+////            session = sessionFactory.openSession();
+////        }
+//
+//        return sessionFactory.getCurrentSession();
+//    }
 
 }

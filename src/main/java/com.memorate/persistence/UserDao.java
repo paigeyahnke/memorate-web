@@ -15,15 +15,28 @@ public class UserDao {
 
     private final Logger log = Logger.getLogger(this.getClass());
 
-
     /** Get a single memory by the given id
      *
      * @param  username
-     * @return Memory
+     * @return User
      */
     public User getUser(String username) {
-        Session session = SessionFactoryProvider.getSessionFactory().openSession();
-        User user = (User) session.get(User.class, username);
+        Session session = SessionFactoryProvider.getSessionFactory().getCurrentSession();
+
+        User user = null;
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+
+            user = (User) session.get(User.class, username);
+
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            log.error(e);
+        }
+
+//        User user = (User) session.get(User.class, username);
         return user;
     }
 
@@ -33,7 +46,7 @@ public class UserDao {
      * @return memory id
      */
     public String addUser(User user) {
-        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Session session = SessionFactoryProvider.getSessionFactory().getCurrentSession();
         Transaction tx = null;
         String username = null;
         try {
@@ -43,11 +56,10 @@ public class UserDao {
             tx.commit();
             log.info("Added user: " + user + " with username: " + username);
         } catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
+            if (tx !=null ) tx.rollback();
             log.error(e);
-        } finally {
-            session.close();
         }
+
         return username;
     }
 

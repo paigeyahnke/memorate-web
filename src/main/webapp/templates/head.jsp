@@ -15,6 +15,7 @@
     <script type="application/javascript" src="${root}/js/jquery.js"></script>
     <script type="application/javascript" src="${root}/js/script.js"></script>
 
+
     <%--<script type="application/javascript" src="${root}/js/script.js"></script>--%>
 
 </head>
