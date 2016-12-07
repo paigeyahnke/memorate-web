@@ -14,7 +14,9 @@ import java.nio.file.Paths;
 @WebServlet("/image")
 public class ImagePath extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        final String UPLOAD_DIRECTORY = "/users/paige/documents/enterprisejava/memorate-web/uploads";
+//        final String UPLOAD_DIRECTORY = "/users/paige/documents/enterprisejava/memorate-web/uploads";
+        final String UPLOAD_DIRECTORY = "/root/uploads";
+
 
         String fileName = request.getParameter("fileName");
 

@@ -48,15 +48,16 @@ public class Remember extends HttpServlet {
         Memory memory = new Memory(name, rating, fileName, memo, username);
         MemoryDao dao = new MemoryDao();
         memory.setTags(extractTags(tagString, memory));
-        dao.addMemory(memory);
+        int id = dao.addMemory(memory);
 
         if (fileName != null && !fileName.isEmpty()) {
+            String path = username + id + fileName;
             uploadImage(memory.getImagePath(), filePart);
         } else {
             log.info("Did not upload a file for memory " + memory.getMemoryId());
         }
 
-        response.sendRedirect("/memories");
+        response.sendRedirect("memories");
     }
 
     private Set<Tag> extractTags(String tagsString, Memory memory) {
@@ -87,7 +88,9 @@ public class Remember extends HttpServlet {
 
     private String uploadImage(String fileName, Part filePart) throws IOException {
         // Create path components to save the file
-        final String path = "/users/paige/documents/enterprisejava/memorate-web/uploads";
+//        final String path = "/users/paige/documents/enterprisejava/memorate-web/uploads";
+        final String path = "/root/uploads";
+
 
         OutputStream out = null;
         InputStream filecontent = null;

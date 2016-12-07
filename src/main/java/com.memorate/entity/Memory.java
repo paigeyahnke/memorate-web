@@ -3,11 +3,7 @@ package com.memorate.entity;
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Created by paige on 9/14/16.
@@ -23,7 +19,7 @@ public class Memory {
     private int rating;
 
     @Column(name = "image")
-    private String imagePath;
+    private String imageName;
 
     @Column(name = "memo")
     private String memo;
@@ -59,9 +55,7 @@ public class Memory {
         this.name = name;
         this.rating = rating;
         this.username = username;
-
-        // If imageName is null don't create an image path
-        this.imagePath = (imageName != null) ? username + "-" + memoryId + "-" + imageName : null;
+        this.imageName = imageName;
         this.memo = memo;
     }
 
@@ -89,12 +83,12 @@ public class Memory {
         this.rating = rating;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public String getImageName() {
+        return imageName;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImageName(String imagePath) {
+        this.imageName = imagePath;
     }
 
     public String getMemo() {
@@ -160,13 +154,17 @@ public class Memory {
 
     }
 
+    public String getImagePath() {
+        return (imageName != null) ? username + "-" + memoryId + "-" + imageName : null;
+    }
+
     @Override
     public String toString() {
         return "ViewMemory{" +
                 "memoryId='" + memoryId + '\'' +
                 ", name='" + name + '\'' +
                 ", rating='" + rating + '\'' +
-                ", imagePath=" + imagePath + '\'' +
+                ", imagePath=" + imageName + '\'' +
                 ", memo= " + memo +
                 '}';
     }
