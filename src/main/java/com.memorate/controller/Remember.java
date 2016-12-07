@@ -2,25 +2,25 @@ package com.memorate.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.servlet.http.Part;
+import java.io.*;
 import java.util.*;
 
 import com.memorate.entity.Memory;
 import com.memorate.entity.Tag;
-import com.memorate.entity.User;
-import com.memorate.persistence.AbstractDao;
 import com.memorate.persistence.MemoryDao;
-import com.memorate.persistence.UserDao;
 import org.apache.log4j.Logger;
 
 /**
  * Created by paige on 10/19/16.
  */
 @WebServlet(name = "Remember", urlPatterns = { "/remember" } )
+@MultipartConfig
 public class Remember extends HttpServlet {
 
     private final Logger log = Logger.getLogger(this.getClass());
@@ -35,17 +35,26 @@ public class Remember extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("The recorded rating is: " + request.getParameter("rating"));
 
+        // TODO Upload the file here
+        final Part filePart = request.getPart("image");
+        final String fileName = getFileName(filePart);
+
         String name = request.getParameter("name");
         int rating = Integer.parseInt(request.getParameter("rating"));
         String memo = request.getParameter("memo");
-        String imagePath = null;
         String username = request.getUserPrincipal().getName();
         String tagString = request.getParameter("tags");
 
-        Memory memory = new Memory(name, rating, imagePath, memo, username);
+        Memory memory = new Memory(name, rating, fileName, memo, username);
         MemoryDao dao = new MemoryDao();
         memory.setTags(extractTags(tagString, memory));
         dao.addMemory(memory);
+
+        if (fileName != null && !fileName.isEmpty()) {
+            uploadImage(memory.getImagePath(), filePart);
+        } else {
+            log.info("Did not upload a file for memory " + memory.getMemoryId());
+        }
 
         response.sendRedirect("/memories");
     }
@@ -74,5 +83,53 @@ public class Remember extends HttpServlet {
         }
 
         return tags;
+    }
+
+    private String uploadImage(String fileName, Part filePart) throws IOException {
+        // Create path components to save the file
+        final String path = "/users/paige/documents/enterprisejava/memorate-web/uploads";
+
+        OutputStream out = null;
+        InputStream filecontent = null;
+
+        try {
+            out = new FileOutputStream(new File(path + File.separator
+                    + fileName));
+            filecontent = filePart.getInputStream();
+
+            int read = 0;
+            final byte[] bytes = new byte[1024];
+
+            while ((read = filecontent.read(bytes)) != -1) {
+                out.write(bytes, 0, read);
+            }
+            log.info("Successfully saved image.");
+
+        } catch (FileNotFoundException fne) {
+            log.error("You either did not specify a file to upload or are "
+                    + "trying to upload a file to a protected or nonexistent "
+                    + "location. ERROR: " + fne.getMessage());
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+            if (filecontent != null) {
+                filecontent.close();
+            }
+        }
+
+        return fileName;
+    }
+
+    private String getFileName(final Part part) {
+        final String partHeader = part.getHeader("content-disposition");
+        for (String content : partHeader.split(";")) {
+            if (content.trim().startsWith("filename")) {
+                return content.substring(
+                        content.indexOf('=') + 1).trim().replace("\"", "");
+            }
+        }
+        log.error("Couldn't get file name");
+        return null;
     }
 }

@@ -15,6 +15,7 @@
         <div id="forms">
             <form id="record"
                   action="${pageContext.request.contextPath}/remember"
+                  enctype="multipart/form-data"
                   method="post">
 
                 <h2>Remember</h2>
@@ -40,6 +41,7 @@
                        placeholder=" tag1, tag2, tag3 " />
                 <br />
 
+                <input type="hidden" name="MAX_FILE_SIZE" value="500" />
                 <input type="file"
                        id="imageSelector"
                        name="image"

@@ -29,8 +29,9 @@
     <div class="memoryDetail">
         <h1>${memory.name}</h1>
         <p id="memo">${memory.memo}</p>
-        <img src="${imagePath}/${empty memory.imagePath ? defaultImage : memory.imagePath}" />
-        ${memory.getRatingHtml()}
+        <img src="${root}/image?fileName=${memory.imagePath == null ? defaultImage : memory.imagePath}" />
+
+    ${memory.getRatingHtml()}
         <div id="tagList">${memory.getTagList()}</div>
     </div>
 </div>

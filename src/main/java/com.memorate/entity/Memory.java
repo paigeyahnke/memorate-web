@@ -51,26 +51,17 @@ public class Memory {
      * Instantiates a new memory.
      *
      * @param name memory name/ title
-     * @param rating on scale of 1-5
+     * @param rating rating on scale of 1-5
+     * @param imageName name of the image
+     * @param memo memo to future self
      */
-    public Memory(String name, int rating, String username) {
-        this();
+    public Memory(String name, int rating, String imageName, String memo, String username) {
         this.name = name;
         this.rating = rating;
         this.username = username;
-    }
 
-    /**
-     * Instantiates a new memory.
-     *
-     * @param name memory name/ title
-     * @param rating rating on scale of 1-5
-     * @param imagePath path to image
-     * @param memo memo to future self
-     */
-    public Memory(String name, int rating, String imagePath, String memo, String username) {
-        this(name, rating, username);
-        this.imagePath = imagePath;
+        // If imageName is null don't create an image path
+        this.imagePath = (imageName != null) ? username + "-" + memoryId + "-" + imageName : null;
         this.memo = memo;
     }
 
@@ -179,6 +170,4 @@ public class Memory {
                 ", memo= " + memo +
                 '}';
     }
-
-
 }
