@@ -24,7 +24,7 @@ public class SignUp extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("remember");
+        response.sendRedirect("memories");
     }
 
     @Override
@@ -48,7 +48,7 @@ public class SignUp extends HttpServlet {
                 log.error(e);
             }
 
-            response.sendRedirect("remember");
+            response.sendRedirect("memories");
         } else {
             response.sendError(400, "Username already taken");
         }

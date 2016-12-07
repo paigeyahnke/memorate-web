@@ -1,24 +1,7 @@
+<!DOCTYPE html>
 <html>
 
-<%@ include file="../templates/tagSetup.jsp" %>
-
 <%@ include file="../templates/head.jsp" %>
-
-
-<head>
-    <title>MemoRate</title>
-
-    <link rel="stylesheet" type="text/css" href="${root}/styles/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Hind|Istok+Web|Roboto+Condensed|Rubik" rel="stylesheet">
-
-    <!-- For DataTables -->
-    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script type="application/javascript" src="${root}/js/jquery.js"></script>
-
-    <script type="application/javascript" src="${root}/js/script.js"></script>
-</head>
 
 <body>
     <%@ include file="../templates/header.jsp" %>
@@ -26,39 +9,58 @@
     <%@ include file="../templates/navigation.jsp" %>
 
     <div id="top">
-        <%--<input class="search" type="search" name="search" placeholder="Search" />--%>
     </div>
 
     <div id="main">
-        <table class="display datatable" id="memoryTable">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Rating</th>
-                <th>Memo</th>
-                <th>Tags</th>
-            </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="memory" items="${memories}">
-                    <tr id="${root}/memory?id=${memory.memoryId}">
-                        <%--<a href="${root}/memory?id=${memory.memoryId}">--%>
-                            <td>${memory.memoryId}</td>
-                            <td>${memory.name}</td>
-                            <td>${memory.rating}</td>
-                            <td>${memory.memo}</td>
-                            <td>${memory.getTagList()}</td>
-                        <%--</a>--%>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </div>       
+        <div id="forms">
+            <form id="record"
+                  action="${pageContext.request.contextPath}/remember"
+                  method="post">
 
-    <footer>     
+                <h2>Remember</h2>
+                <br />
+
+                <label for="title">Title</label>
+                <input type="text"
+                       name="name"
+                       id="title"
+                       autofocus />
+                <br />
+
+                <label for="memo">Memo</label>
+                <input type="text"
+                       name="memo"
+                       id="memo" />
+                <br />
+
+                <label for="tags">Tags</label>
+                <input type="text"
+                       name="tags"
+                       id="tags"
+                       placeholder=" tag1, tag2, tag3 " />
+                <br />
+
+                <input type="file"
+                       id="imageSelector"
+                       name="image"
+                       accept="image/*" />
+
+                <select id="rating" name="rating" style="display:none;">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <button id="saveMemoryButton" class="submit">Remember</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
     </footer>
-
 </body>
 
 </html>

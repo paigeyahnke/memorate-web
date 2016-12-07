@@ -26,6 +26,6 @@ public class SignOut extends HttpServlet {
             log.error(e);
         }
 
-        response.sendRedirect("/remember");
+        response.sendRedirect("/memories");
     }
 }

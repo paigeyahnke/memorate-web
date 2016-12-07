@@ -8,8 +8,6 @@
         <div id="user"></div>
     </header>
 
-    <nav><ul></ul></nav>
-
     <div id="top">
     </div>
 
@@ -20,7 +18,7 @@
                 <br />
 
                 <label for="userName">User Name: </label>
-                <input type="text" name="j_username" id="userName">
+                <input type="text" name="j_username" id="userName" autofocus>
                 <br />
 
                 <label for="password">Password: </label>

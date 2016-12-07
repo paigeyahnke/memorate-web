@@ -26,6 +26,6 @@ public class DeleteMemory  extends HttpServlet {
         MemoryDao dao = new MemoryDao();
         dao.deleteMemory(dao.getMemory(memoryId));
 
-        response.sendRedirect("/remember");
+        response.sendRedirect("/memories");
     }
 }

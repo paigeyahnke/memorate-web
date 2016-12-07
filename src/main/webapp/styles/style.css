@@ -28,7 +28,6 @@ table#userInformation td {
     color: #4E564B;
 }
 
-
 table#userInformation th {
     font-size: 1.2em;
     padding: .5em;
@@ -263,7 +262,7 @@ h3 {
     width: 70%;  
     text-align: center;
     margin: 0 auto;
-    padding: 1em;
+    padding: .75em;
 }
 
 #main {
@@ -363,9 +362,10 @@ li {
     width: 20em;
     max-width: 95%;
     background-color: #ccf3cf;
-    margin: 1em auto;
+    margin: 0 auto 1em auto;
     padding: 1em;
     border-radius: 1em;
+    display: inline-block;
 }
 
 .memoryDetail img {
@@ -373,6 +373,42 @@ li {
     max-height: 14em;
     margin: .5em auto;
     display: block;
+}
+
+#memoryNavigator {
+    /*background-color: rgb(78, 78, 77);*/
+    border-radius: .5em;
+    padding: .25em 1em;
+    display: inline-block;
+    font-size: 1em;
+    color: #363635;
+}
+
+#memoryNavigator a {
+    text-decoration: none;
+    color: #363635;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#memoryNavigator img {
+    height: 1.25em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#memoryNavigator a:visited {
+    color: #363635;
+}
+
+#memoryNavigator ul {
+    padding: 0;
+    display: inline-block;
+}
+
+#memoryNavigator ul li {
+    display: inline-block;
+    margin: .25em .5em;
 }
 
 .memoryDetail h1 {

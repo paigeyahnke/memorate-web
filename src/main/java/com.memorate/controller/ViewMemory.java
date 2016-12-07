@@ -13,15 +13,15 @@ import com.memorate.persistence.MemoryDao;
 import org.apache.log4j.Logger;
 
 
-@WebServlet(name = "Memory", urlPatterns = { "/memory" } )
-public class MemoryController extends HttpServlet {
+@WebServlet(name = "ViewMemory", urlPatterns = { "/viewMemory" } )
+public class ViewMemory extends HttpServlet {
     private final Logger log = Logger.getLogger(this.getClass());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MemoryDao dao = new MemoryDao();
         int id = Integer.parseInt(request.getParameter("id"));
-        Memory memory = dao.getMemory(id);
+        com.memorate.entity.Memory memory = dao.getMemory(id);
         request.setAttribute("memory", memory);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/user/memory.jsp");
         dispatcher.forward(request, response);

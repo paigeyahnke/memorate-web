@@ -1,5 +1,6 @@
 package com.memorate.controller;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +20,16 @@ import org.apache.log4j.Logger;
 /**
  * Created by paige on 10/19/16.
  */
-@WebServlet(name = "Record", urlPatterns = { "/record" } )
-public class Record extends HttpServlet {
+@WebServlet(name = "Remember", urlPatterns = { "/remember" } )
+public class Remember extends HttpServlet {
 
     private final Logger log = Logger.getLogger(this.getClass());
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/remember.jsp");
+        dispatcher.forward(request, response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +47,7 @@ public class Record extends HttpServlet {
         memory.setTags(extractTags(tagString, memory));
         dao.addMemory(memory);
 
-        response.sendRedirect("/remember");
+        response.sendRedirect("/memories");
     }
 
     private Set<Tag> extractTags(String tagsString, Memory memory) {
@@ -54,7 +61,7 @@ public class Record extends HttpServlet {
         String strippedString = tagsString.replaceAll("\\s+","");
         strippedString = strippedString.replaceAll("&", "");
         strippedString = strippedString.toLowerCase();
-        List<String> tagList = Arrays.asList(strippedString.split(","));
+        HashSet<String> tagList = new HashSet<>(Arrays.asList(strippedString.split(",")));
 
         Set<Tag> tags = new HashSet<>();
         for (String tagString : tagList) {

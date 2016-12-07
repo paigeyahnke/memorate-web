@@ -22,7 +22,7 @@
         <web-resource-collection>
             <web-resource-name>user</web-resource-name>
             <url-pattern>/user/*</url-pattern>
-            <url-pattern>/remember</url-pattern>
+            <url-pattern>/memories</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>

@@ -171,7 +171,7 @@ public class Memory {
 
     @Override
     public String toString() {
-        return "Memory{" +
+        return "ViewMemory{" +
                 "memoryId='" + memoryId + '\'' +
                 ", name='" + name + '\'' +
                 ", rating='" + rating + '\'' +

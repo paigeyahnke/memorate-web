@@ -53,14 +53,14 @@ public class MemoryDao {
             log.error(e);
         }
 
-//        memories = session.createCriteria(Memory.class, username).list();
+//        memories = session.createCriteria(ViewMemory.class, username).list();
         return new HashSet<Memory>(memories);
     }
 
     /** Get a single memory by the given id
      *
      * @param id memory's id
-     * @return Memory
+     * @return ViewMemory
      */
     public Memory getMemory(int id) {
         Memory memory = null;
@@ -83,8 +83,8 @@ public class MemoryDao {
 
     /** Retrieve memories by rating
      *
-     * @param rating Memory's rating which is the search criteria
-     * @return Memory
+     * @param rating ViewMemory's rating which is the search criteria
+     * @return ViewMemory
      */
     public List<Memory> getMemoriesByRating(int rating) {
         Session session = SessionFactoryProvider.getSessionFactory().getCurrentSession();

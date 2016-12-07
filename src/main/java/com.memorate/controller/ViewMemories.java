@@ -17,8 +17,8 @@ import org.apache.log4j.Logger;
 /**
  * Created by paige on 10/19/16.
  */
-@WebServlet(name = "remember", urlPatterns = { "/remember" } )
-public class MemoriesController extends HttpServlet {
+@WebServlet(name = "memories", urlPatterns = { "/memories" } )
+public class ViewMemories extends HttpServlet {
 
     private final Logger log = Logger.getLogger(this.getClass());
 
@@ -32,7 +32,7 @@ public class MemoriesController extends HttpServlet {
 
         request.setAttribute("memories", memories);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("user/remember.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/memories.jsp");
         dispatcher.forward(request, response);
 
     }

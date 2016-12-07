@@ -1,6 +1,6 @@
 //package com.memorate.persistence;
 //
-//import com.memorate.entity.Memory;
+//import com.memorate.entity.ViewMemory;
 //import org.junit.Before;
 //import org.junit.Test;
 //
@@ -22,13 +22,13 @@
 //
 //    @Test
 //    public void getAllMemories() throws Exception {
-//        List<Memory> memories = memoryDao.getAllMemories();
+//        List<ViewMemory> memories = memoryDao.getAllMemories();
 //        assertTrue(memories.size() > 0);
 //    }
 //
 //    @Test
 //    public void getMemory() throws Exception {
-//        Memory memory = memoryDao.getMemory(1);
+//        ViewMemory memory = memoryDao.getMemory(1);
 //        assertTrue(memory.getRating() == 5);
 //    }
 //
@@ -39,7 +39,7 @@
 //
 //    @Test
 //    public void deleteMemory() throws Exception {
-//        Memory memory = new Memory("Karuba Gold", 2, "holliniesen");
+//        ViewMemory memory = new ViewMemory("Karuba Gold", 2, "holliniesen");
 //        memoryId = memoryDao.addMemory(memory);
 //        assertNotNull("Failed to insert new memory", memoryDao.getMemory(memoryId));
 //        memoryDao.deleteMemory(memoryDao.getMemory(memoryId));
@@ -48,17 +48,17 @@
 //
 //    @Test
 //    public void updateMemory() throws Exception {
-//        Memory memory = new Memory("Karuba Gold", 2, "holliniesen");
+//        ViewMemory memory = new ViewMemory("Karuba Gold", 2, "holliniesen");
 //        memoryId = memoryDao.addMemory(memory);
-//        assertEquals("Memory not recorded correctly", 2, memoryDao.getMemory(memoryId).getRating());
+//        assertEquals("ViewMemory not recorded correctly", 2, memoryDao.getMemory(memoryId).getRating());
 //        memory.setRating(4);
 //        memoryDao.updateMemory(memory);
-//        assertEquals("Memory not recorded correctly", 4, memoryDao.getMemory(memoryId).getRating());
+//        assertEquals("ViewMemory not recorded correctly", 4, memoryDao.getMemory(memoryId).getRating());
 //    }
 //
 //    @Test
 //    public void getAllMemoriesForUser() throws Exception {
-//        List<Memory> memories = memoryDao.getAllMemoriesFor("holliniesen");
+//        List<ViewMemory> memories = memoryDao.getAllMemoriesFor("holliniesen");
 //        assertNotNull("No memories returned", memories);
 //    }
 //
