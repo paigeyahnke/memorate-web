@@ -9,13 +9,15 @@ import org.apache.log4j.Logger;
 
 
 /**
- * Created by paige on 10/19/16.
+ * The user dao used to access user related information in the database.
+ * @author Paige Yahnke
  */
 public class UserDao {
 
     private final Logger log = Logger.getLogger(this.getClass());
 
-    /** Get a single memory by the given id
+    /**
+     * Get the user with a given username.
      *
      * @param  username
      * @return User
@@ -24,40 +26,39 @@ public class UserDao {
         Session session = SessionFactoryProvider.getSessionFactory().getCurrentSession();
 
         User user = null;
-        Transaction tx = null;
+        Transaction transaction = null;
+
         try {
-            tx = session.beginTransaction();
-
+            transaction = session.beginTransaction();
             user = (User) session.get(User.class, username);
-
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx != null) tx.rollback();
-            log.error(e);
+            transaction.commit();
+        } catch (HibernateException exception) {
+            if (transaction != null) transaction.rollback();
+            log.error(exception);
         }
 
-//        User user = (User) session.get(User.class, username);
         return user;
     }
 
     /**
      * Add a new user
      * @param user
-     * @return memory id
+     * @return the username
      */
     public String addUser(User user) {
         Session session = SessionFactoryProvider.getSessionFactory().getCurrentSession();
-        Transaction tx = null;
+        Transaction transaction = null;
         String username = null;
+
         try {
-            tx = session.beginTransaction();
+            transaction = session.beginTransaction();
             username = (String) session.save(user);
             session.save(createUserRole(user));
-            tx.commit();
+            transaction.commit();
             log.info("Added user: " + user + " with username: " + username);
-        } catch (HibernateException e) {
-            if (tx !=null ) tx.rollback();
-            log.error(e);
+        } catch (HibernateException exception) {
+            if (transaction !=null ) transaction.rollback();
+            log.error(exception);
         }
 
         return username;

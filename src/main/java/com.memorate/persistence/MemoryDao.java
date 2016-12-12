@@ -11,8 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Created by Paige Yahnke on 9/14/16.
- *
+ * The memory dao used to access memory related information in the database.
  * @author Paige Yahnke
  */
 public class MemoryDao {
