@@ -2,6 +2,7 @@ package com.memorate.controller;
 
 import com.memorate.entity.Memory;
 import com.memorate.persistence.MemoryDao;
+import com.memorate.utilities.Utilities;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.Properties;
 
 /**
  * Created by paige on 11/30/16.
@@ -30,23 +32,9 @@ public class DeleteMemory  extends HttpServlet {
         dao.deleteMemory(memory);
 
         if (fileName != null) {
-            final String UPLOAD_DIRECTORY = "/root/uploads";
-
-            deleteImage(Paths.get(UPLOAD_DIRECTORY, fileName));
+            Utilities.deleteFile(fileName);
         }
 
         response.sendRedirect("memories");
-    }
-
-    private void deleteImage(Path imagePath) {
-        try {
-            Files.delete(imagePath);
-        } catch (NoSuchFileException x) {
-            log.error("No such file or directory: " + imagePath);
-        } catch (IOException x) {
-            // File permission problems are caught here.
-            log.error("Problem deleting image" + x);
-        }
-
     }
 }
