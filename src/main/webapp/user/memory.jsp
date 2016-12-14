@@ -29,7 +29,7 @@
     <div class="memoryDetail">
         <h1>${memory.name}</h1>
         <p id="memo">${memory.memo}</p>
-        <img src="${root}/image?fileName=${memory.getImagePath() == null ? defaultImage : memory.getImagePath()}" />
+        <img src="${root}/image?fileName=${memory.getFullImageName() == null ? defaultImage : memory.getFullImageName()}" />
 
     ${memory.getRatingHtml()}
         <div id="tagList">${memory.getTagList()}</div>

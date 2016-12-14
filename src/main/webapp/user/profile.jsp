@@ -1,6 +1,9 @@
 <html>
 
 <%@ include file="../templates/head.jsp" %>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="703511659985-08bkth1fdhc355s5uqn44p8pvv84quf2.apps.googleusercontent.com">
+
 
 <body>
     <%@ include file="../templates/header.jsp" %>
@@ -29,6 +32,10 @@
                 <td class="editable">${user.lastName != null ? user.lastName : "NA"}</td>
             </tr>
         </table>
+
+        <div class="g-signin2" data-onsuccess="onSignIn" id="googleButton"></div>
+        <button type="button" id="updateInformation">Update Information</button>
+        <button type="button" id="googleSignOut">Sign out</button>
 
     </div>
 

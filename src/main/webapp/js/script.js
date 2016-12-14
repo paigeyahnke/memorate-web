@@ -24,3 +24,7 @@ function  clearErrors() {
         errors[0].parentNode.removeChild(errors[0]);
     }
 }
+
+function onSignIn(googleUser) {
+    console.log("Signed in");
+}
