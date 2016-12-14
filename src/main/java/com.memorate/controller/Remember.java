@@ -16,7 +16,7 @@ import com.memorate.utilities.Utilities;
 import org.apache.log4j.Logger;
 
 /**
- * Created by paige on 10/19/16.
+ * Servlet that records a memory.
  */
 @WebServlet(name = "Remember", urlPatterns = { "/remember" } )
 @MultipartConfig
@@ -24,12 +24,26 @@ public class Remember extends HttpServlet {
 
     private final Logger log = Logger.getLogger(this.getClass());
 
+    /**
+     * Redirects to the remember jsp
+     * @param request request
+     * @param response response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/remember.jsp");
         dispatcher.forward(request, response);
     }
 
+    /**
+     * Records a memory
+     * @param request request with memory information
+     * @param response response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("The recorded rating is: " + request.getParameter("rating"));
@@ -46,13 +60,10 @@ public class Remember extends HttpServlet {
         Memory memory = new Memory(name, rating, fileName, memo, username);
         MemoryDao dao = new MemoryDao();
         memory.setTags(Utilities.extractTags(tagString, memory));
-        int id = dao.addMemory(memory);
+        dao.addMemory(memory);
 
         if (fileName != null && !fileName.isEmpty()) {
-            String path = username + id + fileName;
-            Utilities.uploadImage(memory.getImagePath(), filePart);
-        } else {
-            log.info("Did not upload a file for memory " + memory.getMemoryId());
+            Utilities.uploadImage(memory.getFullImageName(), filePart);
         }
 
         response.sendRedirect("memories");

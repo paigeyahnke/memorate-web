@@ -13,12 +13,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by paige on 12/6/16.
+ * Grabs user information and reroutes to user profile page.
  */
 @WebServlet(name = "Profile", urlPatterns = { "/profile" } )
 public class Profile  extends HttpServlet {
     private final Logger log = Logger.getLogger(this.getClass());
 
+    /**
+     * Gets the user information and passes to profile page
+     * @param request request
+     * @param response response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

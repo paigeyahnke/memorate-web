@@ -1,6 +1,5 @@
 package com.memorate.controller;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,7 @@ import com.memorate.persistence.UserDao;
 import org.apache.log4j.Logger;
 
 /**
- * Created by paige on 10/19/16.
+ * Servlet that signs up and signs in a user
  *
  * @author Paige Yahnke
  */
@@ -22,11 +21,26 @@ public class SignUp extends HttpServlet {
 
     private final Logger log = Logger.getLogger(this.getClass());
 
+    /**
+     * Redirects user to view memories, which prompts sign in.
+     *
+     * @param request request
+     * @param response response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.sendRedirect("memories");
     }
 
+    /**
+     * Signs up a new users, and then signs them in
+     * @param request request that includes the new usename and password
+     * @param response response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
@@ -52,6 +66,5 @@ public class SignUp extends HttpServlet {
         } else {
             response.sendError(400, "Username already taken");
         }
-
     }
 }

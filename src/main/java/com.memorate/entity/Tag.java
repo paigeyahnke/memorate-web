@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JoinColumnOrFormula;
 
 /**
- * Created by paige on 10/19/16.
+ * Represents one tag for a memory
  */
 @Entity
 @Table(name = "tag")
@@ -23,31 +23,59 @@ public class Tag {
     @ManyToOne(cascade = CascadeType.ALL)
     private Memory memory;
 
+    /**
+     * Creates a tag
+     */
     public Tag() {
 
     }
 
+    /**
+     * Creates a tag
+     * @param keyword keyword/ tag
+     * @param memory associated memory
+     */
     public Tag(String keyword, Memory memory) {
         this.keyword = keyword;
         this.memory = memory;
     }
 
+    /**
+     * Getter for tag id
+     * @return tag id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Getter for keyword
+     * @return keyword
+     */
     public String getKeyword() {
         return keyword;
     }
 
+    /**
+     * Setter for keyword
+     * @param keyword keyword
+     */
     public void setKeyword(String keyword) {
         this.keyword = keyword;
     }
 
+    /**
+     * Getter for memory
+     * @return associated memory
+     */
     public Memory getMemory() {
         return memory;
     }
 
+    /**
+     * Setter for memory
+     * @param memory associated memory
+     */
     public void setMemory(Memory memory) {
         this.memory = memory;
     }

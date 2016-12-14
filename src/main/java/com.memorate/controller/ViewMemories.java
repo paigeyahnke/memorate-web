@@ -15,13 +15,21 @@ import com.memorate.persistence.MemoryDao;
 import org.apache.log4j.Logger;
 
 /**
- * Created by paige on 10/19/16.
+ * Servlet that fetches up memories for the user and passes it to the memories jsp for display.
+ * @author Paige Yahnke
  */
 @WebServlet(name = "memories", urlPatterns = { "/memories" } )
 public class ViewMemories extends HttpServlet {
 
     private final Logger log = Logger.getLogger(this.getClass());
 
+    /**
+     * Fetches the memories for the user and passes them to the jsp for display
+     * @param request request containing the username
+     * @param response response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getUserPrincipal().getName();

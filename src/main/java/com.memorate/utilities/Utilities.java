@@ -30,16 +30,17 @@ public class Utilities {
      * @return the properties values
      */
     public static Properties loadProperties(String propertiesPath) {
+        Properties newProperties = new Properties();
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
         try (InputStream resourceStream = loader.getResourceAsStream(propertiesPath)) {
             log.info("Loading properties from properties file: " + propertiesPath);
-            properties.load(resourceStream);
+            newProperties.load(resourceStream);
         } catch (IOException exception) {
             log.error(exception);
         }
 
-        return properties;
+        return newProperties;
     }
 
     /**
@@ -165,5 +166,9 @@ public class Utilities {
             // File permission problems are caught here.
             log.error("Problem deleting image: " + error);
         }
+    }
+
+    public static String getUploadDirectory() {
+        return UPLOAD_DIRECTORY;
     }
 }

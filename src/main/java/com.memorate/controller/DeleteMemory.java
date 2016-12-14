@@ -11,16 +11,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.file.*;
-import java.util.Properties;
 
 /**
- * Created by paige on 11/30/16.
+ * Deletes a memory from the database.
  */
 @WebServlet(name = "DeleteMemory", urlPatterns = { "/delete" } )
 public class DeleteMemory  extends HttpServlet {
     private final Logger log = Logger.getLogger(this.getClass());
 
+    /**
+     * Deletes a memory from the database.
+     * @param request request containing memory id
+     * @param response response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int memoryId = Integer.parseInt(request.getParameter("memoryId"));
@@ -28,7 +33,7 @@ public class DeleteMemory  extends HttpServlet {
         log.info("Deleting memory with id: " + memoryId);
         MemoryDao dao = new MemoryDao();
         Memory memory = dao.getMemory(memoryId);
-        String fileName = memory.getImagePath();
+        String fileName = memory.getFullImageName();
         dao.deleteMemory(memory);
 
         if (fileName != null) {

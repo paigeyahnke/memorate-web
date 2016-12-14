@@ -9,12 +9,19 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 
 /**
- * Created by paige on 10/19/16.
+ * Signs out a user.
  */
 @WebServlet(name = "SignOut", urlPatterns = { "/signOut" } )
 public class SignOut extends HttpServlet {
     private final Logger log = Logger.getLogger(this.getClass());
 
+    /**
+     * Signs out a user.
+     * @param request request
+     * @param response response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
