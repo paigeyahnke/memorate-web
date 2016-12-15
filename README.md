@@ -16,3 +16,4 @@ Ask the you that lived in that moment; only they know how you really felt.
 [View Wireframe](design/MemoRate_Wireframe.pdf)  
 [Database](design/database.png)  
 [Supporting Technologies](integrations.md)  
+[JavaDoc](javadoc/index.html)
