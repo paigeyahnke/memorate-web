@@ -18,6 +18,10 @@ public class UtilitiesTest {
     private static final String UGLY_TAG_STRING = "coffee,ESPRESSO,       kwik, tRi  p";
     private final String CORRECT_CLEANED_STRING = "coffee,espresso,kwik,trip";
 
+    /**
+     * Verifies that properties can be loaded
+     * @throws Exception
+     */
     @Test
     public void loadProperties() throws Exception {
         Properties properties = Utilities.loadProperties("dev.properties");
@@ -25,14 +29,22 @@ public class UtilitiesTest {
         assertTrue("Directory path not found", directory != null);
     }
 
+    /**
+     * Cleans a string
+     * @throws Exception
+     */
     @Test
     public void cleanTagString() throws Exception {
         String cleanString = Utilities.cleanTagString(UGLY_TAG_STRING);
         assertEquals("Did not correctly clean string", CORRECT_CLEANED_STRING, cleanString);
     }
 
+    /**
+     * Generated tags for memory
+     * @throws Exception
+     */
     @Test
-    public void extractTags() throws Exception {
+    public void autoGenerateTags() throws Exception {
         Memory memory = new Memory("Jack's Pepperoni & Sausage Pizza", 2, null, "Pretty good", "test");
         String generatedString = Utilities.autoGenerateTags(memory);
         String correctString = ",Jacks,Pepperoni,Sausage,Pizza";
